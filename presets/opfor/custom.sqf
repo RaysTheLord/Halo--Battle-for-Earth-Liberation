@@ -1,0 +1,129 @@
+/*
+    Needed Mods:
+    - None
+
+    Optional Mods:
+    - None
+*/
+
+// Enemy infantry classes
+opfor_officer = "O_officer_F";                                          // Officer (BRUTE Chieftan)
+opfor_squad_leader = "O_Soldier_SL_F";                                  // Squad Leader (BRUTE)
+opfor_team_leader = "WBK_Grunt_2";                                   // Team Leader
+opfor_sentry = "OPTRE_Jackal_F";                                      // Rifleman (Lite)
+opfor_rifleman = "WBK_Grunt_5";                                         // Rifleman
+opfor_rpg = "O_Soldier_LAT_F";                                          // Rifleman (LAT) (BRUTE)
+opfor_grenadier = "OPTREW_Grunt_3";                                     // Grenadier
+opfor_machinegunner = "WBK_Grunt_1";                                 // Autorifleman)
+opfor_heavygunner = "WBK_Grunt_1";                                  // Heavy Gunner
+opfor_marksman = "OPTRE_Jackal_Marksman_F";                                       // Marksman
+opfor_sharpshooter = "OPTRE_Jackal_Sharpshooter_F";                                // Sharpshooter
+opfor_sniper = "OPTRE_Jackal_Sniper_F";                                            // Sniper
+opfor_at = "OPTREW_Hunter_3";                                            // AT Specialist
+opfor_aa = "O_Soldier_AA_F";                                            // AA Specialist (BRUTE)
+opfor_medic = "WBK_Grunt_3";                                              // Combat Life Saver
+opfor_engineer = "WBK_Grunt_3";                                        // Engineer
+opfor_paratrooper = "WBK_Grunt_3";                                   // Paratrooper (BRUTE SPEC OPS ONLY)
+
+// Enemy vehicles used by secondary objectives.
+opfor_mrap = "OPTRE_FC_Spectre_Empty";
+opfor_mrap_armed = "OPTRE_FC_Spectre_AI";                                   // Ifrit (HMG)
+opfor_transport_helo = "OPTRE_FC_Spirit";                   // Mi-290 Taru (Bench)
+opfor_transport_truck = "OPTRE_FC_Spectre_Transport";                         // Tempest Transport (Covered)
+opfor_ammobox_transport = "OPTRE_FC_Spectre_Empty";                     // Tempest Transport (Open) -> Has to be able to transport resource crates!
+opfor_fuel_truck = "OPTRE_FC_Spectre_Empty";                                 // Tempest Fuel
+opfor_ammo_truck = "OPTRE_FC_Spectre_Empty";                                 // Tempest Ammo
+opfor_fuel_container = "COV_Supply_Pod_CLOSED";             // Taru Fuel Pod
+opfor_ammo_container = "COV_Supply_Pod_OPEN";             // Taru Ammo Pod
+opfor_flag = "OPTRE_CTF_Flag_PurpleCOV";                                             // Flag
+
+/* Adding a value to these arrays below will add them to a one out of however many in the array, random pick chance.
+Therefore, adding the same value twice or three times means they are more likely to be chosen more often. */
+
+/* Militia infantry. Lightweight soldier classnames the game will pick from randomly as sector defenders.
+Think of them like garrison or military police forces, which are more meant to control the local population instead of fighting enemy armies. */
+militia_squad = [
+    //ADD BRUTE HERE
+	"OPTRE_Jackal_Infantry2_F",
+	"WBK_Grunt_5",
+	"WBK_Grunt_1",
+	"WBK_Grunt_1",
+	"OPTRE_Jackal_F",
+	"OPTRE_Jackal_F",
+	"WBK_Grunt_1",
+	"WBK_Grunt_1",
+	"WBK_Grunt_1",
+	"WBK_Grunt_1",
+	"WBK_Grunt_1"
+];
+
+// Militia vehicles. Lightweight vehicle classnames the game will pick from randomly as sector defenders. Can also be empty for only infantry milita.
+militia_vehicles = [
+    "OPTRE_FC_Ghost"
+];
+
+// All enemy vehicles that can spawn as sector defenders and patrols at high enemy combat readiness (aggression levels).
+opfor_vehicles = [
+	"OPTRE_FC_Wraith_Tank",
+	"OPTRE_FC_Wraith_Tank",
+	"OPTRE_FC_Wraith",
+	"OPTRE_FC_Wraith",
+	"OPTRE_FC_AA_Wraith_NOFLAK",
+	"OPTRE_FC_Spectre_Transport",
+	"OPTRE_FC_Spectre_AI",
+	"OPTRE_FC_Spectre_AT",
+	"OPTRE_FC_Spectre_AA"
+];
+
+// All enemy vehicles that can spawn as sector defenders and patrols but at a lower enemy combat readiness (aggression levels).
+opfor_vehicles_low_intensity = [
+	"OPTRE_FC_Wraith",
+	"OPTRE_FC_Spectre_AI",
+	"OPTRE_FC_Spectre_AI",
+	"OPTRE_FC_Spectre_Empty"
+];
+
+// All enemy vehicles that can spawn as battlegroups, either assaulting or as reinforcements, at high enemy combat readiness (aggression levels).
+opfor_battlegroup_vehicles = [
+	"OPTRE_FC_Spirit",
+	"OPTRE_FC_Spirit_Concussion",
+	"OPTRE_FC_Type26B_Banshee",
+	"OPTRE_FC_Wraith_Tank",
+	"OPTRE_FC_Wraith",
+	"OPTRE_FC_AA_Wraith_NOFLAK",
+	"OPTRE_FC_Spectre_AI",
+	"OPTRE_FC_Spectre_AT",
+	"OPTRE_FC_Spectre_Transport",
+    "OPTRE_FC_Ghost_Armor",
+    "OPTRE_FC_Ghost_FuelRod",
+	"OPTRE_FC_Spectre_AA"
+];
+
+// All enemy vehicles that can spawn as battlegroups, either assaulting or as reinforcements, at lower enemy combat readiness (aggression levels).
+opfor_battlegroup_vehicles_low_intensity = [
+	"OPTRE_FC_Spirit",
+	"OPTRE_FC_Type26B_Banshee",
+	"OPTRE_FC_Wraith",
+	"OPTRE_FC_Spectre",
+	"OPTRE_FC_Spectre_Transport",
+	"OPTRE_FC_Ghost"
+];
+
+/* All vehicles that spawn within battlegroups (see the above 2 arrays) and also hold 8 soldiers as passengers.
+If something in this array can't hold all 8 soldiers then buggy behaviours may occur.    */
+opfor_troup_transports = [
+    "OPTRE_FC_Spectre_Transport",
+    "OPTRE_FC_Spirit"
+];
+
+// Enemy rotary-wings that will need to spawn in flight.
+opfor_choppers = [
+	"OPTRE_FC_Spirit",
+	"OPTRE_FC_Type26B_Banshee"
+];
+
+// Enemy fixed-wings that will need to spawn in the air.
+opfor_air = [
+	"OPTRE_FC_Type27_Banshee",									//To-199 Neophron (CAS)
+	"OPTRE_FC_Type26N_Banshee"												//To-201 Shikra
+];
