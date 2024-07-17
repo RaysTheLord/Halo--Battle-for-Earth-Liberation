@@ -31,15 +31,35 @@ if !(_spawn_marker isEqualTo "") then {
 
         // Create infantry groups with up to 8 units per squad
         private _grp = createGroup [GRLIB_side_enemy, true];
+        private _gruntGrp = createGroup [GRLIB_side_enemy, true];
         for "_i" from 0 to (_target_size - 1) do {
             if (_i > 0 && {(_i % 8) isEqualTo 0}) then {
                 _bg_groups pushBack _grp;
+                if (count (units _gruntGrp) > 0) then {
+                    _bg_groups pushBack _gruntGrp;
+                } else {
+                    deleteGroup _gruntGrp;
+                };
                 _grp = createGroup [GRLIB_side_enemy, true];
+                _gruntGrp = createGroup [GRLIB_side_enemy, true];
             };
-            [selectRandom _infClasses, markerPos _spawn_marker, _grp] call KPLIB_fnc_createManagedUnit;
+            _chosenUnit = selectRandom _infClasses;
+            if (["Grunt", _chosenUnit] call BIS_fnc_inString) then {
+                [_chosenUnit, markerPos _spawn_marker, _gruntGrp] call KPLIB_fnc_createManagedUnit;
+            } else {
+                [_chosenUnit, markerPos _spawn_marker, _grp] call KPLIB_fnc_createManagedUnit;
+            };
+            
         };
         [_grp] spawn battlegroup_ai;
         _bg_groups pushBack _grp;
+        if (count (units _gruntGrp) > 0) then {
+            [_gruntGrp] spawn battlegroup_ai;
+            _bg_groups pushBack _gruntGrp;
+        } else {
+            deleteGroup _gruntGrp;
+        };
+
     } else {
         private _vehicle_pool = [opfor_battlegroup_vehicles, opfor_battlegroup_vehicles_low_intensity] select (combat_readiness < 50);
 
@@ -67,7 +87,7 @@ if !(_spawn_marker isEqualTo "") then {
             };
         } forEach _selected_opfor_battlegroup;
 
-        if (GRLIB_csat_aggressivity > 0.9) then {
+        if (GRLIB_csat_aggressivity > 0.2) then {
             [[markerPos _spawn_marker] call KPLIB_fnc_getNearestBluforObjective] spawn spawn_air;
         };
     };

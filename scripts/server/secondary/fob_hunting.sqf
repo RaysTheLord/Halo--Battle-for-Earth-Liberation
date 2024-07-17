@@ -71,6 +71,7 @@ sleep 1;
 {_x setDamage 0; _x allowDamage true;} foreach (_base_objectives + _base_objects);
 
 _grpdefenders = createGroup [GRLIB_side_enemy, true];
+_grpdefendersGrunts = createGroup [GRLIB_side_enemy, true];
 _idxselected = [];
 
 while {(count _idxselected) < _defenders_amount && (count _idxselected) < (count _defenders_to_build)} do {
@@ -83,9 +84,13 @@ while {(count _idxselected) < _defenders_amount && (count _idxselected) < (count
         "_nextpos",
         "_nextdir"
     ];
-
+    private _nextDefender = objNull;
     _nextpos = [((_base_position select 0) + (_nextpos select 0)), ((_base_position select 1) + (_nextpos select 1)), (_nextpos select 2)];
-    private _nextDefender = [_nextclass, _nextpos, _grpdefenders, "PRIVATE", 0.5] call KPLIB_fnc_createManagedUnit;
+     if (["Grunt", _nextclass] call BIS_fnc_inString) then {
+        _nextDefender = [_nextclass, _nextpos, _grpdefendersGrunts, "PRIVATE", 0.5] call KPLIB_fnc_createManagedUnit;
+    } else {
+        _nextDefender = [_nextclass, _nextpos, _grpdefenders, "PRIVATE", 0.5] call KPLIB_fnc_createManagedUnit;
+    };
     _nextDefender setdir _nextdir;
     _nextDefender setpos _nextpos;
     [_nextDefender] spawn building_defence_ai;

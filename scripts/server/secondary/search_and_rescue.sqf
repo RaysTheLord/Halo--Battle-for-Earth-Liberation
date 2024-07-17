@@ -32,6 +32,8 @@ private _pilotUnits = units _pilotsGrp;
 } foreach (_pilotUnits);
 
 private _grppatrol = createGroup [GRLIB_side_enemy, true];
+private _grppatrolGrunt = createGroup [GRLIB_side_enemy, true];
+
 private _patrolcorners = [
     [ (getpos _helowreck select 0) - 40, (getpos _helowreck select 1) - 40, 0 ],
     [ (getpos _helowreck select 0) + 40, (getpos _helowreck select 1) - 40, 0 ],
@@ -43,7 +45,17 @@ private _patrolcorners = [
     [_x, _patrolcorners select 0, _grppatrol, "PRIVATE", 0.5] call KPLIB_fnc_createManagedUnit;
 } foreach ([] call KPLIB_fnc_getSquadComp);
 
+{
+    if (["Grunt", _x] call BIS_fnc_inString) then {
+        [_x, _patrolcorners select 0, _grppatrolGrunt, "PRIVATE", 0.5] call KPLIB_fnc_createManagedUnit;
+    } else {
+        [_x, _patrolcorners select 0, _grppatrol, "PRIVATE", 0.5] call KPLIB_fnc_createManagedUnit;
+    };
+} foreach ([] call KPLIB_fnc_getSquadComp);
+
+
 while {(count (waypoints _grppatrol)) != 0} do {deleteWaypoint ((waypoints _grppatrol) select 0);};
+while {(count (waypoints _grppatrolGrunt)) != 0} do {deleteWaypoint ((waypoints _grppatrol) select 0);};
 {
     private _nextcorner = _x;
     _waypoint = _grppatrol addWaypoint [_nextcorner,0];
@@ -51,11 +63,22 @@ while {(count (waypoints _grppatrol)) != 0} do {deleteWaypoint ((waypoints _grpp
     _waypoint setWaypointSpeed "LIMITED";
     _waypoint setWaypointBehaviour "SAFE";
     _waypoint setWaypointCompletionRadius 5;
+    
+    _waypoint2 = _grppatrolGrunt addWaypoint [_nextcorner,0];
+    _waypoint2 setWaypointType "MOVE";
+    _waypoint2 setWaypointSpeed "LIMITED";
+    _waypoint2 setWaypointBehaviour "SAFE";
+    _waypoint2 setWaypointCompletionRadius 5;
+
 } foreach _patrolcorners;
 
 _waypoint = _grppatrol addWaypoint [(_patrolcorners select 0), 0];
 _waypoint setWaypointType "CYCLE";
 {_x doFollow (leader _grppatrol)} foreach units _grppatrol;
+
+_waypoint2 = _grppatrolGrunt addWaypoint [(_patrolcorners select 0), 0];
+_waypoint2 setWaypointType "CYCLE";
+{_x doFollow (leader _grppatrolGrunt)} foreach units _grppatrolGrunt;
 
 private _grpsentry = createGroup [GRLIB_side_enemy, true];
 private _nbsentry = 2 + (floor (random 3));

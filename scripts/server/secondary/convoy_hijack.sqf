@@ -76,10 +76,17 @@ _waypoint setWaypointType "CYCLE";
 _waypoint setWaypointCompletionRadius 50;
 
 private _troops_group = createGroup [GRLIB_side_enemy, true];
+private _troops_groupGrunt = createGroup [GRLIB_side_enemy, true];
 {
-    [_x, _spawnpos, _troops_group, "PRIVATE", 0.5] call KPLIB_fnc_createManagedUnit;
+    
+    if (["Grunt", _x] call BIS_fnc_inString) then {
+        [_x, _spawnpos, _troops_groupGrunt, "PRIVATE", 0.5] call KPLIB_fnc_createManagedUnit;
+    } else {
+        [_x, _spawnpos, _troops_group, "PRIVATE", 0.5] call KPLIB_fnc_createManagedUnit;
+    };
 } foreach ([] call KPLIB_fnc_getSquadComp);
 {_x moveInCargo _troop_vehicle} foreach (units _troops_group);
+{_x moveInCargo _troop_vehicle} foreach (units _troops_groupGrunt);
 
 private _convoy_marker = createMarkerLocal [ format [ "convoymarker%1", round time], getpos _transport_vehicle ];
 _convoy_marker setMarkerText (localize "STR_SECONDARY_CSAT_CONVOY");
@@ -140,6 +147,17 @@ while { _mission_in_progress } do {
 
         _troops_group setBehaviour "COMBAT";
         _troops_group setCombatMode "RED";
+        
+        {
+            unAssignVehicle _x;
+            _x action ["eject", vehicle _x];
+            _x action ["getout", vehicle _x];
+            unAssignVehicle _x;
+            sleep 0.7;
+        } foreach (units _troops_groupGrunt);
+
+        _troops_groupGrunt setBehaviour "COMBAT";
+        _troops_groupGrunt setCombatMode "RED";
     };
 
     if ( _convoy_attacked && !_convoy_flee) then {

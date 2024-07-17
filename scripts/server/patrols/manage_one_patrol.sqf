@@ -15,6 +15,7 @@ while { GRLIB_endgame == 0 } do {
     };
 
     _grp = grpNull;
+    _grpGrunts = grpNull;
 
     _spawn_marker = "";
     while { _spawn_marker == "" } do {
@@ -28,9 +29,14 @@ while { GRLIB_endgame == 0 } do {
 
     if (_is_infantry) then {
         _grp = createGroup [GRLIB_side_enemy, true];
+        _grpGrunts = createGroup [GRLIB_side_enemy, true];
         _squad = [] call KPLIB_fnc_getSquadComp;
-        {
-            [_x, _sector_spawn_pos, _grp, "PRIVATE", 0.5] call KPLIB_fnc_createManagedUnit;
+        {   
+            if (["Grunt", _x] call BIS_fnc_inString) then {
+                [_x, _sector_spawn_pos, _grpGrunts, "PRIVATE", 0.5] call KPLIB_fnc_createManagedUnit;
+            } else {
+                [_x, _sector_spawn_pos, _grp, "PRIVATE", 0.5] call KPLIB_fnc_createManagedUnit;
+            };
         } foreach _squad;
     } else {
 
@@ -46,6 +52,9 @@ while { GRLIB_endgame == 0 } do {
     };
 
     [_grp] spawn patrol_ai;
+    if !(_grpGrunts isEqualTo grpNull) then {
+        [_grpGrunts] spawn patrol_ai;
+    };
 
     _started_time = time;
     _patrol_continue = true;
@@ -56,21 +65,28 @@ while { GRLIB_endgame == 0 } do {
             _grp setGroupOwner ( owner _headless_client );
         };
     };
+    if ( local _grpGrunts ) then {
+        _headless_client = [] call KPLIB_fnc_getLessLoadedHC;
+        if ( !isNull _headless_client ) then {
+            _grpGrunts setGroupOwner ( owner _headless_client );
+        };
+    };
+
 
     while { _patrol_continue } do {
         sleep 60;
-        if ( count (units _grp) == 0  ) then {
+        if ( count (units _grp) == 0  && count (units _grpGrunts) == 0) then {
             _patrol_continue = false;
         } else {
             if ( time - _started_time > 900 ) then {
-                if ( [ getpos (leader _grp) , 4000 , GRLIB_side_friendly ] call KPLIB_fnc_getUnitsCount == 0 ) then {
+                if ( [ getpos (leader _grp) , 4000, GRLIB_side_friendly ] call KPLIB_fnc_getUnitsCount == 0 && [ getpos (leader _grpGrunts), 4000 , GRLIB_side_friendly ] call KPLIB_fnc_getUnitsCount == 0 ) then {
                     _patrol_continue = false;
                     {
                         if ( vehicle _x != _x ) then {
                             [(vehicle _x)] call KPLIB_fnc_cleanOpforVehicle;
                         };
                         deleteVehicle _x;
-                    } foreach (units _grp);
+                    } foreach ((units _grp) + (units _grpGrunts));
                 };
             };
         };

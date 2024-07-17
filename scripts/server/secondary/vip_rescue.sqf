@@ -56,14 +56,20 @@ private _pilotUnits = units _pilotsGrp;
 
 //Now the baddies
 private _grppatrol = createGroup [GRLIB_side_enemy, true];
+private _grppatrolGrunts = createGroup [GRLIB_side_enemy, true];
 
 {
-    [_x, secondary_objective_position, _grppatrol, "PRIVATE", 0.5] call KPLIB_fnc_createManagedUnit;
+    if (["Grunt", _x] call BIS_fnc_inString) then {
+        [_x, secondary_objective_position, _grppatrolGrunts, "PRIVATE", 0.5] call KPLIB_fnc_createManagedUnit;
+    } else {
+        [_x, secondary_objective_position, _grppatrol, "PRIVATE", 0.5] call KPLIB_fnc_createManagedUnit;
+    };
 } foreach ([] call KPLIB_fnc_getSquadComp);
+
 
 //Get a building within the 1500 m sector to put them in
 private _buildings = nearestObjects [secondary_objective_position, ["house"], 1500] select {       
-  [_x, (count (units _grppatrol)) + (count _pilotUnits)] call BIS_fnc_isBuildingEnterable
+  [_x, (count (units _grppatrol)) + (count _pilotUnits) + (count (units _grppatrolGrunts))] call BIS_fnc_isBuildingEnterable
 }; 
 
 //If there's a building, put them inside, otherwise let them chill
@@ -82,6 +88,14 @@ if (count _buildings > 0) then {
     {       
         _x setPos (_house select (_forEachIndex + (count (units _grppatrol))));       
     } foreach _pilotUnits;
+    //Move grunts in
+    {       
+        _x disableAI "PATH";       
+        _x setUnitPos selectRandom ["UP","UP","MIDDLE"];       
+        _x setPos (_house select (_forEachIndex + ((count (units _grppatrol)) + (count _pilotUnits)) ));       
+        _x addEventHandler["Fired",{params ["_unit"];_unit enableAI "PATH";_unit setUnitPos "AUTO";_unit removeEventHandler ["Fired",_thisEventHandler];}];       
+        _x triggerDynamicSimulation false;      
+    } foreach (units _grppatrolGrunts); 
 };
 
 //Wait until the pilots are rescued

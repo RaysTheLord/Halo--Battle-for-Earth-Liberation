@@ -197,27 +197,39 @@ if ((!(_sector in blufor_sectors)) && (([markerPos _sector, [_opforcount] call K
     _managed_units = _managed_units + ([_sectorpos] call KPLIB_fnc_spawnMilitaryPostSquad);
 
     if (count _squad1 > 0) then {
-        _grp = [_sector, _squad1] call KPLIB_fnc_spawnRegularSquad;
+        _grps_combined = [_sector, _squad1] call KPLIB_fnc_spawnRegularSquad;
+        _grp = _grps_combined select 0;
+        _grpGrunt = _grps_combined select 1;
         [_grp, _sectorpos] spawn add_defense_waypoints;
-        _managed_units = _managed_units + (units _grp);
+        [_grpGrunt, _sectorpos] spawn add_defense_waypoints;
+        _managed_units = _managed_units + (units _grp) + (units _grpGrunt);
     };
 
     if (count _squad2 > 0) then {
-        _grp = [_sector, _squad2] call KPLIB_fnc_spawnRegularSquad;
+        _grps_combined = [_sector, _squad2] call KPLIB_fnc_spawnRegularSquad;
+        _grp = _grps_combined select 0;
+        _grpGrunt = _grps_combined select 1;
         [_grp, _sectorpos] spawn add_defense_waypoints;
-        _managed_units = _managed_units + (units _grp);
+        [_grpGrunt, _sectorpos] spawn add_defense_waypoints;
+        _managed_units = _managed_units + (units _grp) + (units _grpGrunt);
     };
 
     if (count _squad3 > 0) then {
-        _grp = [_sector, _squad3] call KPLIB_fnc_spawnRegularSquad;
+        _grps_combined = [_sector, _squad3] call KPLIB_fnc_spawnRegularSquad;
+        _grp = _grps_combined select 0;
+        _grpGrunt = _grps_combined select 1;
         [_grp, _sectorpos] spawn add_defense_waypoints;
-        _managed_units = _managed_units + (units _grp);
+        [_grpGrunt, _sectorpos] spawn add_defense_waypoints;
+        _managed_units = _managed_units + (units _grp) + (units _grpGrunt);
     };
 
     if (count _squad4 > 0) then {
-        _grp = [_sector, _squad4] call KPLIB_fnc_spawnRegularSquad;
+        _grps_combined = [_sector, _squad4] call KPLIB_fnc_spawnRegularSquad;
+        _grp = _grps_combined select 0;
+        _grpGrunt = _grps_combined select 1;
         [_grp, _sectorpos] spawn add_defense_waypoints;
-        _managed_units = _managed_units + (units _grp);
+        [_grpGrunt, _sectorpos] spawn add_defense_waypoints;
+        _managed_units = _managed_units + (units _grp) + (units _grpGrunt);
     };
 
     if (_spawncivs && GRLIB_civilian_activity > 0) then {

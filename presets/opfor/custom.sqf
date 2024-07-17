@@ -14,7 +14,7 @@ opfor_sentry = "OPTRE_Jackal_F";                                      // Riflema
 opfor_rifleman = "WBK_Grunt_5";                                         // Rifleman
 opfor_rpg = "O_Soldier_LAT_F";                                          // Rifleman (LAT) (BRUTE)
 opfor_grenadier = "OPTREW_Grunt_3";                                     // Grenadier
-opfor_machinegunner = "WBK_Grunt_1";                                 // Autorifleman)
+opfor_machinegunner = "OPTRE_Jackal_Infantry_F";                                 // Autorifleman
 opfor_heavygunner = "WBK_Grunt_1";                                  // Heavy Gunner
 opfor_marksman = "OPTRE_Jackal_Marksman_F";                                       // Marksman
 opfor_sharpshooter = "OPTRE_Jackal_Sharpshooter_F";                                // Sharpshooter
@@ -23,7 +23,7 @@ opfor_at = "OPTREW_Hunter_3";                                            // AT S
 opfor_aa = "O_Soldier_AA_F";                                            // AA Specialist (BRUTE)
 opfor_medic = "WBK_Grunt_3";                                              // Combat Life Saver
 opfor_engineer = "WBK_Grunt_3";                                        // Engineer
-opfor_paratrooper = "WBK_Grunt_3";                                   // Paratrooper (BRUTE SPEC OPS ONLY)
+opfor_paratrooper = "OPTRE_Jackal_Infantry_F";                                   // Paratrooper (BRUTE SPEC OPS)
 
 // Enemy vehicles used by secondary objectives.
 opfor_mrap = "OPTRE_FC_Spectre_Empty";

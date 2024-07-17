@@ -6,7 +6,7 @@
 
 _bodyguard_amount = floor (random [2, 4, 8]);
 
-_bodyguard_types = [opfor_squad_leader, opfor_paratrooper, opfor_marksman, opfor_team_leader, opfor_medic];
+_bodyguard_types = [opfor_squad_leader, opfor_paratrooper, opfor_marksman, opfor_sharpshooter];
 
 //select random OPFOR owned town (capture)
 

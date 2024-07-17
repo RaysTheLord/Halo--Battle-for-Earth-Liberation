@@ -37,6 +37,7 @@ if (_amount > floor ((count _positions) * GRLIB_defended_buildingpos_part)) then
 
 // Spawn units
 private _grp = createGroup [GRLIB_side_enemy, true];
+private _gruntsGrp = createGroup [GRLIB_side_enemy, true];
 private _pos = markerPos _sector;
 private _unit = objNull;
 private _units = [];
@@ -45,8 +46,17 @@ for "_i" from 1 to _amount do {
     if (count (units _grp) >= 10) then {
         _grp = createGroup [GRLIB_side_enemy, true];
     };
+    //Ditto for Grunts
+    if (count (units _grp) >= 10) then {
+        _gruntsGrp = createGroup [GRLIB_side_enemy, true];
+    };
 
-    _unit = [selectRandom _classnames, _pos, _grp] call KPLIB_fnc_createManagedUnit;
+    _unitType = selectRandom _classnames;
+    if (["Grunt", _unitType] call BIS_fnc_inString) then {
+        _unit = [selectRandom _classnames, _pos, _gruntsGrp] call KPLIB_fnc_createManagedUnit;
+    } else {
+        _unit = [selectRandom _classnames, _pos, _grp] call KPLIB_fnc_createManagedUnit;
+    };
     _unit setDir (random 360);
     _unit setPos (_positions deleteAt (random (floor (count _positions) - 1)));
     [_unit, _sector] spawn building_defence_ai;
