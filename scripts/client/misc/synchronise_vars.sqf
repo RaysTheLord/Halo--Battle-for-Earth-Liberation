@@ -3,9 +3,10 @@ synchro_done = false;
 
 waitUntil {!isNil "sync_vars"};
 
+private _KP_liberation_playerRanks_old = [];
 while {true} do {
     waitUntil {sleep 0.2; (count sync_vars) > 0};
-
+    
     KP_liberation_fob_resources = sync_vars select 0;
     KP_liberation_supplies_global = sync_vars select 1;
     KP_liberation_ammo_global = sync_vars select 2;
@@ -23,6 +24,18 @@ while {true} do {
     infantry_weight = sync_vars select 14;
     armor_weight = sync_vars select 15;
     air_weight = sync_vars select 16;
+    
+    KP_liberation_playerRanks = sync_vars select 17;
+    
+    //Handle changes to the rank lineup
+    //TODO: Deep copy to KP_liberation_playerRanks so I can properly see if there were any actual changes
+    if !(_KP_liberation_playerRanks_old isEqualTo KP_liberation_playerRanks) then {
+        _KP_liberation_playerRanks_old = KP_liberation_playerRanks;
+        //TODO: When medal display is ready, refresh the medal display.  For now, we will simply print the rank info
+        systemChat str KP_liberation_playerRanks;
+        systemChat "RANK UPDATE";
+    };
+    
 
     sync_vars = [];
     one_synchro_done = true;

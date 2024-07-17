@@ -34,6 +34,26 @@ ied_manager = compileFinal preprocessFileLineNumbers "scripts\server\sector\ied_
 manage_one_sector = compileFinal preprocessFileLineNumbers "scripts\server\sector\manage_one_sector.sqf";
 wait_to_spawn_sector = compileFinal preprocessFileLineNumbers "scripts\server\sector\wait_to_spawn_sector.sqf";
 
+//Ranks
+get_player_index = compileFinal preprocessFileLineNumbers "scripts\server\ranks\get_player_index.sqf";
+set_ranked_name = compileFinal preprocessFileLineNumbers "scripts\server\ranks\set_ranked_name.sqf";
+set_ranked_rank = compileFinal preprocessFileLineNumbers "scripts\server\ranks\set_ranked_rank.sqf";
+set_ranked_medals = compileFinal preprocessFileLineNumbers "scripts\server\ranks\set_ranked_medals.sqf";
+set_ranked_score = compileFinal preprocessFileLineNumbers "scripts\server\ranks\set_ranked_score.sqf";
+set_ranked_airscore = compileFinal preprocessFileLineNumbers "scripts\server\ranks\set_ranked_airscore.sqf";
+set_medal_score = compileFinal preprocessFileLineNumbers "scripts\server\ranks\set_medal_score.sqf";
+set_medal_airscore = compileFinal preprocessFileLineNumbers "scripts\server\ranks\set_medal_airscore.sqf";
+set_session_wounded = compileFinal preprocessFileLineNumbers "scripts\server\ranks\set_session_wounded.sqf";
+
+get_ranked_rank = compileFinal preprocessFileLineNumbers "scripts\server\ranks\get_ranked_rank.sqf";
+get_ranked_score = compileFinal preprocessFileLineNumbers "scripts\server\ranks\get_ranked_score.sqf";
+get_ranked_airscore = compileFinal preprocessFileLineNumbers "scripts\server\ranks\get_ranked_airscore.sqf";
+get_medal_score = compileFinal preprocessFileLineNumbers "scripts\server\ranks\get_medal_score.sqf";
+get_medal_airscore = compileFinal preprocessFileLineNumbers "scripts\server\ranks\get_medal_airscore.sqf";
+
+add_ranked_score = compileFinal preprocessFileLineNumbers "scripts\server\ranks\add_ranked_score.sqf";
+add_ranked_airscore = compileFinal preprocessFileLineNumbers "scripts\server\ranks\add_ranked_airscore.sqf";
+
 // Globals
 active_sectors = []; publicVariable "active_sectors";
 

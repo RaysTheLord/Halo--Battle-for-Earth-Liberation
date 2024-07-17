@@ -31,9 +31,9 @@ private _vests = missionNamespace getVariable ("KP_liberation_guerilla_vests_" +
 private _headgear = missionNamespace getVariable ("KP_liberation_guerilla_headgear_" + str _tier);
 
 //OVERRIDE LIST OF UNITS
-_t1_elites_pool = ["OPTRE_FC_Elite_MinorAA_IND", "OPTRE_FC_Elite_MinorAT_IND", "OPTRE_FC_Elite_Minor_IND", "OPTRE_FC_Elite_Minor2_IND"];
-_t2_elites_pool = ["OPTRE_FC_Elite_MinorAA_IND", "OPTRE_FC_Elite_MinorAT_IND", "OPTRE_FC_Elite_Minor_IND", "OPTRE_FC_Elite_Minor2_IND", "OPTRE_FC_Elite_Major_IND", "OPTRE_FC_Elite_SpecOps_IND", "OPTRE_FC_Elite_SpecOps2_IND", "OPTRE_FC_Elite_SpecOps3_IND"];
-_t2_elites_pool = ["OPTRE_FC_Elite_MinorAA_IND", "OPTRE_FC_Elite_MinorAT_IND", "OPTRE_FC_Elite_Minor_IND", "OPTRE_FC_Elite_Minor2_IND", "OPTRE_FC_Elite_Major_IND", "OPTRE_FC_Elite_SpecOps_IND", "OPTRE_FC_Elite_SpecOps2_IND", "OPTRE_FC_Elite_SpecOps3_IND", "OPTRE_FC_Elite_FieldMarshal_IND", "OPTRE_FC_Elite_FieldMarshal2_IND", "OPTRE_FC_Elite_Ultra_IND", "OPTRE_FC_Elite_Ultra2_IND", "IMS_Elite_Melee_1", "IMS_Elite_Melee_2"];
+_t1_elites_pool = ["WBK_EliteMainWeap_2"];
+_t2_elites_pool = ["WBK_EliteMainWeap_2", "WBK_EliteMainWeap_3", "WBK_EliteMainWeap_1", "WBK_EliteMainWeap_4"];
+_t2_elites_pool = ["WBK_EliteMainWeap_2", "WBK_EliteMainWeap_3", "WBK_EliteMainWeap_1", "WBK_EliteMainWeap_4", "WBK_EliteMainWeap_5", "WBK_EliteMainWeap_9", "IMS_Elite_Melee_1", "IMS_Elite_Melee_2"];
 
 _grunts_pool = ["OPTREW_Grunt_4"];
 _hunter_pool = ["OPTREW_Hunter_1"];

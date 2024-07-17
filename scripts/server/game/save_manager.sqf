@@ -83,6 +83,10 @@ infantry_weight = 33;
 KP_liberation_civ_rep = 100;
 // Clearances
 KP_liberation_clearances = [];
+
+// Rank data
+KP_liberation_playerRanks = [];
+
 // Strength value of the resistance forces
 KP_liberation_guerilla_strength = 0;
 // Logistic handling data
@@ -196,6 +200,9 @@ if (!isNil "_saveData") then {
         _allMines                                   = _saveData param [19, []];
         _allCrates                                  = _saveData param [20, []];
         KPLIB_sectorTowers                          = _saveData param [21, []];
+        
+        //PLAYER RANK ADDED
+        KP_liberation_playerRanks               = _saveData param [22, []];        
 
         stats_ammo_produced                         = _stats select  0;
         stats_ammo_spent                            = _stats select  1;
@@ -544,6 +551,9 @@ if ((_lockedVehCount < (count sectors_military)) && (_lockedVehCount < (count el
 
 publicVariable "GRLIB_vehicle_to_military_base_links";
 publicVariable "GRLIB_permissions";
+
+publicVariable "KP_liberation_playerRanks";
+
 save_is_loaded = true; publicVariable "save_is_loaded";
 
 [format ["----- Saved data loaded - Time needed: %1 seconds", diag_tickTime - _start], "SAVE"] call KPLIB_fnc_log;

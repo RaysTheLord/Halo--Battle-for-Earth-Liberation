@@ -18,6 +18,9 @@ waitUntil{!isNil "KP_liberation_guerilla_strength"};
 waitUntil{!isNil "infantry_weight"};
 waitUntil{!isNil "armor_weight"};
 waitUntil{!isNil "air_weight"};
+
+waitUntil{!isNil "KP_liberation_playerRanks"};
+
 waitUntil {save_is_loaded};
 
 private _KP_liberation_fob_resources_old = [];
@@ -38,6 +41,8 @@ private _infantry_weight_old = -1;
 private _armor_weight_old = -1;
 private _air_weight_old = -1;
 
+private _KP_liberation_playerRanks_old = [];
+
 while {true} do {
     waitUntil {sleep 0.25;
         !(_KP_liberation_fob_resources_old isEqualTo KP_liberation_fob_resources)
@@ -57,6 +62,7 @@ while {true} do {
         || _infantry_weight_old != infantry_weight
         || _armor_weight_old != armor_weight
         || _air_weight_old != air_weight
+        || !(_KP_liberation_playerRanks_old isEqualTo KP_liberation_playerRanks)
     };
 
     if (KP_liberation_guerilla_strength < 0) then {KP_liberation_guerilla_strength = 0;};
@@ -79,7 +85,8 @@ while {true} do {
         KP_liberation_guerilla_strength,
         infantry_weight,
         armor_weight,
-        air_weight
+        air_weight,
+        KP_liberation_playerRanks
     ];
     publicVariable "sync_vars";
 
@@ -99,5 +106,6 @@ while {true} do {
     _KP_liberation_guerilla_strength_old = KP_liberation_guerilla_strength;
     _infantry_weight_old = infantry_weight;
     _armor_weight_old = armor_weight;
-    _air_weight_old = air_weight;
+    _KP_liberation_playerRanks_old = KP_liberation_playerRanks;
+    
 };

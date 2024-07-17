@@ -12,18 +12,18 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=801;
+		nextID=814;
 	};
 	class LayerIndexProvider
 	{
-		nextID=27;
+		nextID=41;
 	};
 	class Camera
 	{
-		pos[]={9250.582,38.027004,7110.6201};
-		dir[]={0.55021262,-0.54053169,-0.63646811};
-		up[]={0.35349932,0.84132361,-0.40891656};
-		aside[]={-0.75650805,0,-0.65398443};
+		pos[]={8907.332,125.69364,7356.0049};
+		dir[]={0.75223899,-0.46950272,-0.46237144};
+		up[]={0.40000722,0.88291484,-0.24586876};
+		aside[]={-0.52367443,4.9942173e-008,-0.85197145};
 	};
 };
 binarizationWanted=0;
@@ -9143,7 +9143,7 @@ class CustomAttributes
 													class data
 													{
 														singleType="BOOL";
-														value=1;
+														value=0;
 													};
 												};
 												class Item1

@@ -11,6 +11,13 @@ intel_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remot
 start_secondary_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\start_secondary_remote_call.sqf";
 change_prod_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\change_prod_remote_call.sqf";
 build_fac_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\build_fac_remote_call.sqf";
+
+//Ranks
+add_ranked_player = compileFinal preprocessFileLineNumbers "scripts\server\ranks\add_ranked_player.sqf";
+reset_ranked_stats = compileFinal preprocessFileLineNumbers "scripts\server\ranks\reset_ranked_stats.sqf";
+handle_kill_score = compileFinal preprocessFileLineNumbers "scripts\server\ranks\handle_kill_score.sqf";
+
+
 if (KP_liberation_ailogistics) then {
     add_logiGroup_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\add_logiGroup_remote_call.sqf";
     del_logiGroup_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\remotecall\del_logiGroup_remote_call.sqf";

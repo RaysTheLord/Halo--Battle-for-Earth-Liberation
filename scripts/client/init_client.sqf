@@ -88,7 +88,11 @@ if (!KPLIB_sway) then {
 
 execVM "scripts\client\ui\intro.sqf";
 
+//TODO: Remove this if we don't need it (to not mess with our given groups)
 [player] joinSilent (createGroup [GRLIB_side_friendly, true]);
+
+//Request a player addition if not already in there
+[[name player, getPlayerUID player, 0, [], 0, 0, 0, 0, false]] remoteExec ["add_ranked_player", 2];
 
 // Commander init
 if (player isEqualTo ([] call KPLIB_fnc_getCommander)) then {
