@@ -44,7 +44,7 @@ if !(_spawn_marker isEqualTo "") then {
                 _gruntGrp = createGroup [GRLIB_side_enemy, true];
             };
             _chosenUnit = selectRandom _infClasses;
-            if (["Grunt", _chosenUnit] call BIS_fnc_inString) then {
+            if (["WBK", _chosenUnit] call BIS_fnc_inString || ["OPTREW", _chosenUnit] call BIS_fnc_inString || ["IMS", _chosenUnit] call BIS_fnc_inString) then {
                 [_chosenUnit, markerPos _spawn_marker, _gruntGrp] call KPLIB_fnc_createManagedUnit;
             } else {
                 [_chosenUnit, markerPos _spawn_marker, _grp] call KPLIB_fnc_createManagedUnit;

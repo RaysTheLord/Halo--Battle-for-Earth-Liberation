@@ -79,7 +79,7 @@ private _troops_group = createGroup [GRLIB_side_enemy, true];
 private _troops_groupGrunt = createGroup [GRLIB_side_enemy, true];
 {
     
-    if (["Grunt", _x] call BIS_fnc_inString) then {
+    if (["WBK", _x] call BIS_fnc_inString || ["OPTREW", _x] call BIS_fnc_inString || ["IMS", _x] call BIS_fnc_inString) then {
         [_x, _spawnpos, _troops_groupGrunt, "PRIVATE", 0.5] call KPLIB_fnc_createManagedUnit;
     } else {
         [_x, _spawnpos, _troops_group, "PRIVATE", 0.5] call KPLIB_fnc_createManagedUnit;

@@ -59,7 +59,7 @@ private _grppatrol = createGroup [GRLIB_side_enemy, true];
 private _grppatrolGrunts = createGroup [GRLIB_side_enemy, true];
 
 {
-    if (["Grunt", _x] call BIS_fnc_inString) then {
+    if (["WBK", _x] call BIS_fnc_inString || ["OPTREW", _x] call BIS_fnc_inString || ["IMS", _x] call BIS_fnc_inString) then {
         [_x, secondary_objective_position, _grppatrolGrunts, "PRIVATE", 0.5] call KPLIB_fnc_createManagedUnit;
     } else {
         [_x, secondary_objective_position, _grppatrol, "PRIVATE", 0.5] call KPLIB_fnc_createManagedUnit;

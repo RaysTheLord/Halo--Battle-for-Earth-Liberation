@@ -46,7 +46,7 @@ private _patrolcorners = [
 } foreach ([] call KPLIB_fnc_getSquadComp);
 
 {
-    if (["Grunt", _x] call BIS_fnc_inString) then {
+    if (["WBK", _x] call BIS_fnc_inString || ["OPTREW", _x] call BIS_fnc_inString || ["IMS", _x] call BIS_fnc_inString) then {
         [_x, _patrolcorners select 0, _grppatrolGrunt, "PRIVATE", 0.5] call KPLIB_fnc_createManagedUnit;
     } else {
         [_x, _patrolcorners select 0, _grppatrol, "PRIVATE", 0.5] call KPLIB_fnc_createManagedUnit;

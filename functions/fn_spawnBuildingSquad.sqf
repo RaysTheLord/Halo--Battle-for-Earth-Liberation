@@ -52,7 +52,7 @@ for "_i" from 1 to _amount do {
     };
 
     _unitType = selectRandom _classnames;
-    if (["Grunt", _unitType] call BIS_fnc_inString) then {
+    if (["WBK", _unitType] call BIS_fnc_inString || ["OPTREW", _unitType] call BIS_fnc_inString || ["IMS", _unitType] call BIS_fnc_inString) then {
         _unit = [selectRandom _classnames, _pos, _gruntsGrp] call KPLIB_fnc_createManagedUnit;
     } else {
         _unit = [selectRandom _classnames, _pos, _grp] call KPLIB_fnc_createManagedUnit;

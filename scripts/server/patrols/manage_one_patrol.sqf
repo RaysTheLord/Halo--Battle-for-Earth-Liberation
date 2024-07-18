@@ -32,7 +32,7 @@ while { GRLIB_endgame == 0 } do {
         _grpGrunts = createGroup [GRLIB_side_enemy, true];
         _squad = [] call KPLIB_fnc_getSquadComp;
         {   
-            if (["Grunt", _x] call BIS_fnc_inString) then {
+            if (["WBK", _x] call BIS_fnc_inString || ["OPTREW", _x] call BIS_fnc_inString || ["IMS", _x] call BIS_fnc_inString) then {
                 [_x, _sector_spawn_pos, _grpGrunts, "PRIVATE", 0.5] call KPLIB_fnc_createManagedUnit;
             } else {
                 [_x, _sector_spawn_pos, _grp, "PRIVATE", 0.5] call KPLIB_fnc_createManagedUnit;

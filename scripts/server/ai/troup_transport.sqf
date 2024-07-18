@@ -23,7 +23,7 @@ if ((alive _transVeh) && (alive (driver _transVeh))) then {
     _infGruntsGrp = createGroup [GRLIB_side_enemy, true];
 
     {
-        if (["Grunt", _x] call BIS_fnc_inString) then {
+        if (["WBK", _x] call BIS_fnc_inString || ["OPTREW", _x] call BIS_fnc_inString || ["IMS", _x] call BIS_fnc_inString) then {
             [_x, _start_pos, _infGruntsGrp, "PRIVATE", 0.5] call KPLIB_fnc_createManagedUnit;
         } else {
             [_x, _start_pos, _infGrp, "PRIVATE", 0.5] call KPLIB_fnc_createManagedUnit;

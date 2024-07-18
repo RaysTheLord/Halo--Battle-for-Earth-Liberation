@@ -45,7 +45,7 @@ private _grp = createGroup [GRLIB_side_enemy, true];
 private _grpGrunt = createGroup [GRLIB_side_enemy, true];
 {
     if (_forEachIndex < _corrected_amount) then {
-        if (["Grunt", _x] call BIS_fnc_inString) then {
+        if (["WBK", _x] call BIS_fnc_inString || ["OPTREW", _x] call BIS_fnc_inString || ["IMS", _x] call BIS_fnc_inString) then {
             [_x, _spawnPos, _grpGrunt] call KPLIB_fnc_createManagedUnit;
         } else {
             [_x, _spawnPos, _grp] call KPLIB_fnc_createManagedUnit;

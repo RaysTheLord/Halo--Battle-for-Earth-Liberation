@@ -86,7 +86,7 @@ while {(count _idxselected) < _defenders_amount && (count _idxselected) < (count
     ];
     private _nextDefender = objNull;
     _nextpos = [((_base_position select 0) + (_nextpos select 0)), ((_base_position select 1) + (_nextpos select 1)), (_nextpos select 2)];
-     if (["Grunt", _nextclass] call BIS_fnc_inString) then {
+     if (["WBK", _nextclass] call BIS_fnc_inString || ["OPTREW", _nextclass] call BIS_fnc_inString || ["IMS", _nextclass] call BIS_fnc_inString) then {
         _nextDefender = [_nextclass, _nextpos, _grpdefendersGrunts, "PRIVATE", 0.5] call KPLIB_fnc_createManagedUnit;
     } else {
         _nextDefender = [_nextclass, _nextpos, _grpdefenders, "PRIVATE", 0.5] call KPLIB_fnc_createManagedUnit;
