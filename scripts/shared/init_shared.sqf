@@ -16,6 +16,8 @@ build_fac_remote_call = compileFinal preprocessFileLineNumbers "scripts\server\r
 add_ranked_player = compileFinal preprocessFileLineNumbers "scripts\server\ranks\add_ranked_player.sqf";
 reset_ranked_stats = compileFinal preprocessFileLineNumbers "scripts\server\ranks\reset_ranked_stats.sqf";
 handle_kill_score = compileFinal preprocessFileLineNumbers "scripts\server\ranks\handle_kill_score.sqf";
+get_player_index = compileFinal preprocessFileLineNumbers "scripts\server\ranks\get_player_index.sqf";
+get_ranked_medals = compileFinal preprocessFileLineNumbers "scripts\server\ranks\get_ranked_medals.sqf";
 
 
 if (KP_liberation_ailogistics) then {

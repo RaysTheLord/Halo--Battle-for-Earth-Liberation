@@ -38,6 +38,7 @@ write_credit_line = compileFinal preprocessFileLineNumbers "scripts\client\ui\wr
 do_load_box = compileFinal preprocessFileLineNumbers "scripts\client\ammoboxes\do_load_box.sqf";
 kp_fuel_consumption = compileFinal preprocessFileLineNumbers "scripts\client\misc\kp_fuel_consumption.sqf";
 kp_vehicle_permissions = compileFinal preprocessFileLineNumbers "scripts\client\misc\vehicle_permissions.sqf";
+recalculate_medal_entries = compileFinal preprocessFileLineNumbers "scripts\client\misc\recalculate_medal_entries.sqf";
 
 execVM "scripts\client\actions\intel_manager.sqf";
 execVM "scripts\client\actions\recycle_manager.sqf";
@@ -88,11 +89,14 @@ if (!KPLIB_sway) then {
 
 execVM "scripts\client\ui\intro.sqf";
 
-//TODO: Remove this if we don't need it (to not mess with our given groups)
 [player] joinSilent (createGroup [GRLIB_side_friendly, true]);
 
 //Request a player addition if not already in there
-[[name player, getPlayerUID player, 0, [], 0, 0, 0, 0, false]] remoteExec ["add_ranked_player", 2];
+//First, create a session ID
+_extractedTime = systemTimeUTC apply { if (_x < 10) then { "0" + str _x } else { str _x } };
+//In order to persist for longer in case of disconnect, you can remove some of the extracted time additions to make a less unique session id.  e.g. if only going up to 2, we will only have a new ID every day
+_temp_uid = (_extractedTime select 0) + (_extractedTime select 1) + (_extractedTime select 2) + (_extractedTime select 3) + (_extractedTime select 4) + (_extractedTime select 5); //goes down to the second.
+[[name player, getPlayerUID player, 0, [], 0, 0, 0, 0, _temp_uid]] remoteExec ["add_ranked_player", 2];
 
 // Commander init
 if (player isEqualTo ([] call KPLIB_fnc_getCommander)) then {

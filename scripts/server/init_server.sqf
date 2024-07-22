@@ -35,7 +35,6 @@ manage_one_sector = compileFinal preprocessFileLineNumbers "scripts\server\secto
 wait_to_spawn_sector = compileFinal preprocessFileLineNumbers "scripts\server\sector\wait_to_spawn_sector.sqf";
 
 //Ranks
-get_player_index = compileFinal preprocessFileLineNumbers "scripts\server\ranks\get_player_index.sqf";
 set_ranked_name = compileFinal preprocessFileLineNumbers "scripts\server\ranks\set_ranked_name.sqf";
 set_ranked_rank = compileFinal preprocessFileLineNumbers "scripts\server\ranks\set_ranked_rank.sqf";
 set_ranked_medals = compileFinal preprocessFileLineNumbers "scripts\server\ranks\set_ranked_medals.sqf";
@@ -43,16 +42,20 @@ set_ranked_score = compileFinal preprocessFileLineNumbers "scripts\server\ranks\
 set_ranked_airscore = compileFinal preprocessFileLineNumbers "scripts\server\ranks\set_ranked_airscore.sqf";
 set_medal_score = compileFinal preprocessFileLineNumbers "scripts\server\ranks\set_medal_score.sqf";
 set_medal_airscore = compileFinal preprocessFileLineNumbers "scripts\server\ranks\set_medal_airscore.sqf";
-set_session_wounded = compileFinal preprocessFileLineNumbers "scripts\server\ranks\set_session_wounded.sqf";
+set_session_id = compileFinal preprocessFileLineNumbers "scripts\server\ranks\set_session_id.sqf";
 
 get_ranked_rank = compileFinal preprocessFileLineNumbers "scripts\server\ranks\get_ranked_rank.sqf";
 get_ranked_score = compileFinal preprocessFileLineNumbers "scripts\server\ranks\get_ranked_score.sqf";
 get_ranked_airscore = compileFinal preprocessFileLineNumbers "scripts\server\ranks\get_ranked_airscore.sqf";
 get_medal_score = compileFinal preprocessFileLineNumbers "scripts\server\ranks\get_medal_score.sqf";
 get_medal_airscore = compileFinal preprocessFileLineNumbers "scripts\server\ranks\get_medal_airscore.sqf";
+get_session_id = compileFinal preprocessFileLineNumbers "scripts\server\ranks\get_session_id.sqf";
 
 add_ranked_score = compileFinal preprocessFileLineNumbers "scripts\server\ranks\add_ranked_score.sqf";
 add_ranked_airscore = compileFinal preprocessFileLineNumbers "scripts\server\ranks\add_ranked_airscore.sqf";
+add_ranked_medal = compileFinal preprocessFileLineNumbers "scripts\server\ranks\add_ranked_medal.sqf";
+
+remove_ranked_medal = compileFinal preprocessFileLineNumbers "scripts\server\ranks\remove_ranked_medal.sqf";
 
 // Globals
 active_sectors = []; publicVariable "active_sectors";

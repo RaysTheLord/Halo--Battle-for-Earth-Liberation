@@ -31,7 +31,9 @@ if (_index == -1) exitWith {false};
 [_uid, 0] call set_ranked_airscore;
 [_uid, 0] call set_medal_score;
 [_uid, 0] call set_medal_airscore;
-[_uid, false] call set_session_wounded;
+
+//Shouldn't need to reset session ID because the medal progress will be wiped
+//[_uid, ""] call set_session_id;
 
 
 

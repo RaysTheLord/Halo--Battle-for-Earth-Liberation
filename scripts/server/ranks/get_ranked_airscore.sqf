@@ -16,4 +16,4 @@ private _index = [_uid] call get_player_index;
 //Return -1 if not found
 if (_index == -1) exitWith {-1};
 
-KP_liberation_playerRanks select _index select 5
+(KP_liberation_playerRanks select _index) select 5

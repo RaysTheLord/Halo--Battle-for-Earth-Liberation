@@ -5,7 +5,7 @@
     Adds a player to the player list.
 
     Parameter(s):
-        0: ARRAY - Array of player data, e.g [Name, Steam UID, Rank, Medals Array, Score, Airscore, Medal Score, Medal Airscore, Session Wounded]
+        0: ARRAY - Array of player data, e.g [Name, Steam UID, Rank, Medals Array, Score, Airscore, Medal Score, Medal Airscore, Session ID]
 
     Returns:
     BOOL
@@ -31,10 +31,11 @@ if (_index == -1) then {
         //Set name
         [_uid, _newPlayer select 0] call set_ranked_name;
     };
-    //Reset medal score, medal airscore, and session wounded
+    //Reset medal score, medal airscore
     [_uid, 0] call set_medal_score;
     [_uid, 0] call set_medal_airscore;
-    [_uid, false] call set_session_wounded;
+    //Set the passed session ID of the player
+    [_uid, _newPlayer select 8] call set_session_id;
     
     //Set the rank of the player
     [_uid, [_uid] call get_ranked_rank] call set_ranked_rank;

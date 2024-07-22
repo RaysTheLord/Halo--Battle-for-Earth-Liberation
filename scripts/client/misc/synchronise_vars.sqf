@@ -28,12 +28,12 @@ while {true} do {
     KP_liberation_playerRanks = sync_vars select 17;
     
     //Handle changes to the rank lineup
-    //TODO: Deep copy to KP_liberation_playerRanks so I can properly see if there were any actual changes
     if !(_KP_liberation_playerRanks_old isEqualTo KP_liberation_playerRanks) then {
-        _KP_liberation_playerRanks_old = KP_liberation_playerRanks;
+        _KP_liberation_playerRanks_old = +KP_liberation_playerRanks;
         //TODO: When medal display is ready, refresh the medal display.  For now, we will simply print the rank info
-        systemChat str KP_liberation_playerRanks;
-        systemChat "RANK UPDATE";
+        //systemChat str KP_liberation_playerRanks;
+        //Recalculate our medals
+        [] call recalculate_medal_entries;
     };
     
 

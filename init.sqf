@@ -1,4 +1,4 @@
-setDate [2552, 10, 20, 8, 0];
+setDate [2552, 10, 22, 8, 0];
 
 KPLIB_init = false;
 

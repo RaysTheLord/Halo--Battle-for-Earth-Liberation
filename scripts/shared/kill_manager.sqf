@@ -4,11 +4,8 @@ if (isServer) then {
 
     if (KP_liberation_kill_debug > 0) then {[format ["Kill Manager executed - _unit: %1 (%2) - _killer: %3 (%4)", typeOf _unit, _unit, typeOf _killer, _killer], "KILL"] call KPLIB_fnc_log;};
 
-    // Get Killer, when ACE enabled, via lastDamageSource
-    
-    //DISABLING SINCE WE USE NOMEDICAL.  RE-ENABLE IF YOUR SERVER USES ACE MEDICAL
-    /*
-    if (KP_liberation_ace) then {
+    // Get Killer, when ACE medical enabled, via lastDamageSource
+    if (KP_liberation_ace && !KP_liberation_ace_nomed) then {
         if (local _unit) then {
             _killer = _unit getVariable ["ace_medical_lastDamageSource", _killer];
             if (KP_liberation_kill_debug > 0) then {["_unit is local to server", "KILL"] call KPLIB_fnc_log;};
@@ -22,7 +19,6 @@ if (isServer) then {
             publicVariable "KP_liberation_ace_killer";
         };
     };
-    */
 
     // Failsafe if something gets killed before the save manager is finished
     if (isNil "infantry_weight") then {infantry_weight = 33};
@@ -170,15 +166,12 @@ if (isServer) then {
         };
     };
 } else {
-    // Get Killer and send it to server, when ACE enabled, via lastDamageSource
-    //DISABLED DUE TO ACE NO MEDICAL, IF YOUR UNIT USES ACE MEDICAL THAN CHANGE THIS
-    /*
-    if (KP_liberation_ace && local _unit) then {
+    // Get Killer and send it to server, when ACE medical enabled, via lastDamageSource
+    if (KP_liberation_ace && !KP_liberation_ace_nomed && local _unit) then {
         if (KP_liberation_kill_debug > 0) then {[format ["_unit is local to: %1", debug_source], "KILL"] remoteExecCall ["KPLIB_fnc_log", 2];};
         KP_liberation_ace_killer = _unit getVariable ["ace_medical_lastDamageSource", _killer];
         publicVariable "KP_liberation_ace_killer";
     };
-    */
 };
 
 // Body/Wreck deletion after cleanup delay

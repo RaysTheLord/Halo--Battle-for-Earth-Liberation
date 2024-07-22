@@ -2,6 +2,7 @@
 
 // Check if ACE is running
 if (isClass (configfile >> "CfgPatches" >> "ace_common")) then {KP_liberation_ace = true; ["ACE detected. Deactivating resupply script from Liberation.", "MOD"] call KPLIB_fnc_log;} else {KP_liberation_ace = false};
+if (isClass (configfile >> "CfgPatches" >> "ace_nomedical")) then {KP_liberation_ace_nomed = true; ["ACE NO MEDICAL detected.", "MOD"] call KPLIB_fnc_log;} else {KP_liberation_ace_nomed = true};
 
 /* Not saveable params */
 GRLIB_param_wipe_savegame_1 = ["WipeSave1", 0] call bis_fnc_getParamValue;

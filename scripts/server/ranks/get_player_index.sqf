@@ -13,4 +13,3 @@
 params ["_uid"];
 
 KP_liberation_playerRanks findIf {_x select 1 == _uid}
-

@@ -106,6 +106,6 @@ while {true} do {
     _KP_liberation_guerilla_strength_old = KP_liberation_guerilla_strength;
     _infantry_weight_old = infantry_weight;
     _armor_weight_old = armor_weight;
-    _KP_liberation_playerRanks_old = KP_liberation_playerRanks;
+    _KP_liberation_playerRanks_old = +KP_liberation_playerRanks;
     
 };
