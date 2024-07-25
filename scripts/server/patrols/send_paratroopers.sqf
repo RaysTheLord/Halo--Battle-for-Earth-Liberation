@@ -109,12 +109,19 @@ waitUntil {sleep 1;
 
 //Spawn the bad guys directly
 private _para_group = createGroup [GRLIB_side_enemy, true];
+private _para_group_grunt = createGroup [GRLIB_side_enemy, true];
+
 if (alive _newvehicle) then {
 
     _units_arr = [opfor_squad_leader, opfor_sentry, opfor_sentry, opfor_rifleman, opfor_rifleman, opfor_rifleman, opfor_rifleman, opfor_grenadier]; //Ordered list of units to spawn in a paratrooper group
 
     while {(count (units _para_group)) < 8} do {
-        [_units_arr select count (units _para_group), getPos _newvehicle, _para_group] call KPLIB_fnc_createManagedUnit;
+        _selected_unit = _units_arr select count (units _para_group);
+        if (["WBK", _selected_unit] call BIS_fnc_inString || ["OPTREW", _selected_unit] call BIS_fnc_inString || ["IMS", _selected_unit] call BIS_fnc_inString) then {
+            [_selected_unit, getPos _newvehicle, _para_group_grunt] call KPLIB_fnc_createManagedUnit;
+        } else {
+            [_selected_unit, getPos _newvehicle, _para_group] call KPLIB_fnc_createManagedUnit;
+        };        
     };
 
     _newvehicle setFuel 1;
@@ -124,9 +131,11 @@ if (alive _newvehicle) then {
 sleep 0.2;
 while {(count (waypoints _pilot_group)) != 0} do {deleteWaypoint ((waypoints _pilot_group) select 0);};
 while {(count (waypoints _para_group)) != 0} do {deleteWaypoint ((waypoints _para_group) select 0);};
+while {(count (waypoints _para_group_grunt)) != 0} do {deleteWaypoint ((waypoints _para_group) select 0);};
 sleep 0.2;
 {_x doFollow leader _pilot_group} foreach units _pilot_group;
 {_x doFollow leader _para_group} foreach units _para_group;
+{_x doFollow leader _para_group_grunt} foreach units _para_group_grunt;
 sleep 0.2;
 
 _newvehicle flyInHeight 100;
@@ -148,6 +157,7 @@ _waypoint setWaypointType "SAD";
 _waypoint = _pilot_group addWaypoint [_targetpos, 200];
 _waypoint setWaypointType "SAD";
 _pilot_group setCurrentWaypoint [_pilot_group, 1];
+
 _waypoint = _para_group addWaypoint [_targetpos, 100];
 _waypoint setWaypointType "SAD";
 _waypoint = _para_group addWaypoint [_targetpos, 100];
@@ -158,4 +168,16 @@ _waypoint = _para_group addWaypoint [_targetpos, 100];
 _waypoint setWaypointType "SAD";
 _waypoint = _para_group addWaypoint [_targetpos, 100];
 _waypoint setWaypointType "SAD";
+
+_waypoint = _para_group_grunt addWaypoint [_targetpos, 100];
+_waypoint setWaypointType "SAD";
+_waypoint = _para_group_grunt addWaypoint [_targetpos, 100];
+_waypoint setWaypointType "SAD";
+_waypoint = _para_group_grunt addWaypoint [_targetpos, 100];
+_waypoint setWaypointType "SAD";
+_waypoint = _para_group_grunt addWaypoint [_targetpos, 100];
+_waypoint setWaypointType "SAD";
+_waypoint = _para_group_grunt addWaypoint [_targetpos, 100];
+_waypoint setWaypointType "SAD";
+
 _pilot_group setCurrentWaypoint [_para_group, 1];
