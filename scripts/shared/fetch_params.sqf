@@ -1,8 +1,40 @@
 #include "defines.hpp"
 
 // Check if ACE is running
-if (isClass (configfile >> "CfgPatches" >> "ace_common")) then {KP_liberation_ace = true; ["ACE detected. Deactivating resupply script from Liberation.", "MOD"] call KPLIB_fnc_log;} else {KP_liberation_ace = false};
-if (isClass (configfile >> "CfgPatches" >> "ace_nomedical")) then {KP_liberation_ace_nomed = true; ["ACE NO MEDICAL detected.", "MOD"] call KPLIB_fnc_log;} else {KP_liberation_ace_nomed = true};
+if (isClass (configfile >> "CfgPatches" >> "ace_common")) then {
+    KP_liberation_ace = true; 
+    ["ACE detected. Deactivating resupply script from Liberation.", "MOD"] call KPLIB_fnc_log;
+} else {
+    KP_liberation_ace = false;
+    //Start revive system
+    ReviveMode = 1;						//0: disabled, 1: enabled, 2: controlled by player attributes
+    ReviveUnconsciousStateMode = 1;		//0: basic, 1: advanced, 2: realistic
+    ReviveRequiredTrait = 0;			//0: none, 1: medic trait is required
+    ReviveRequiredItems = 2;			//0: none, 1: medkit, 2: medkit or first aid kit
+    ReviveRequiredItemsFakConsumed = 1;	//0: first aid kit is not consumed upon revive, 1: first aid kit is consumed
+    ReviveDelay = 6;					//time needed to revive someone (in secs)
+    ReviveMedicSpeedMultiplier = 2;		//speed multiplier for revive performed by medic
+    ReviveForceRespawnDelay = 3;		//time needed to perform force respawn (in secs)
+    ReviveBleedOutDelay = 120;			//unconscious state duration (in secs)
+};
+
+if (isClass (configfile >> "CfgPatches" >> "ace_nomedical")) then {
+    KP_liberation_ace_nomed = true; ["ACE NO MEDICAL detected.", "MOD"] call KPLIB_fnc_log;
+    //Start revive system
+    if (KP_liberation_ace) then {
+        ReviveMode = 1;						//0: disabled, 1: enabled, 2: controlled by player attributes
+        ReviveUnconsciousStateMode = 1;		//0: basic, 1: advanced, 2: realistic
+        ReviveRequiredTrait = 0;			//0: none, 1: medic trait is required
+        ReviveRequiredItems = 2;			//0: none, 1: medkit, 2: medkit or first aid kit
+        ReviveRequiredItemsFakConsumed = 1;	//0: first aid kit is not consumed upon revive, 1: first aid kit is consumed
+        ReviveDelay = 6;					//time needed to revive someone (in secs)
+        ReviveMedicSpeedMultiplier = 2;		//speed multiplier for revive performed by medic
+        ReviveForceRespawnDelay = 3;		//time needed to perform force respawn (in secs)
+        ReviveBleedOutDelay = 120;			//unconscious state duration (in secs)    
+    };
+} else {
+    KP_liberation_ace_nomed = false;
+};
 
 /* Not saveable params */
 GRLIB_param_wipe_savegame_1 = ["WipeSave1", 0] call bis_fnc_getParamValue;

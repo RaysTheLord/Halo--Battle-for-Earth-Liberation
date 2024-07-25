@@ -12,18 +12,18 @@ class EditorData
 	};
 	class ItemIDProvider
 	{
-		nextID=817;
+		nextID=831;
 	};
 	class LayerIndexProvider
 	{
-		nextID=49;
+		nextID=63;
 	};
 	class Camera
 	{
-		pos[]={9164.8164,232.64594,7184.2827};
-		dir[]={0.55393535,-0.63558865,-0.53778261};
-		up[]={0.45603675,0.77201641,-0.4427377};
-		aside[]={-0.69657862,9.2324626e-008,-0.71750051};
+		pos[]={9227.1504,49.474274,7112.1611};
+		dir[]={-0.14727511,-0.56734651,0.81020242};
+		up[]={-0.10146707,0.82347912,0.55819929};
+		aside[]={0.98387718,7.4505806e-009,0.17884496};
 	};
 };
 binarizationWanted=0;
@@ -172,7 +172,7 @@ class CustomAttributes
 								singleType="ARRAY";
 								class value
 								{
-									items=311;
+									items=312;
 									class Item0
 									{
 										class data
@@ -2661,6 +2661,14 @@ class CustomAttributes
 											value="dev_flood_combat_attack_damageveh";
 										};
 									};
+									class Item311
+									{
+										class data
+										{
+											singleType="STRING";
+											value="tsp_cba_animate_map";
+										};
+									};
 								};
 							};
 						};
@@ -2671,7 +2679,7 @@ class CustomAttributes
 								singleType="ARRAY";
 								class value
 								{
-									items=311;
+									items=312;
 									class Item0
 									{
 										class data
@@ -11142,6 +11150,33 @@ class CustomAttributes
 													{
 														singleType="SCALAR";
 														value=0.2;
+													};
+												};
+												class Item1
+												{
+													class data
+													{
+														singleType="SCALAR";
+														value=1;
+													};
+												};
+											};
+										};
+									};
+									class Item311
+									{
+										class data
+										{
+											singleType="ARRAY";
+											class value
+											{
+												items=2;
+												class Item0
+												{
+													class data
+													{
+														singleType="BOOL";
+														value=0;
 													};
 												};
 												class Item1

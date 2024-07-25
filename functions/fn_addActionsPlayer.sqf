@@ -56,7 +56,7 @@ _player addAction [
             || {_originalTarget getVariable ['KPLIB_isNearStart', false]}
         }
         && {build_confirmed isEqualTo 0}
-        && {['ODST', typeOf _originalTarget] call BIS_fnc_inString; }
+        && {['ODST', typeOf _originalTarget] call BIS_fnc_inString || ['Spartan', typeOf _originalTarget] call BIS_fnc_inString; }
     "
 ];
 

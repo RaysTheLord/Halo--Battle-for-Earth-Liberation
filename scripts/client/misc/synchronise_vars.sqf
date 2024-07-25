@@ -3,7 +3,9 @@ synchro_done = false;
 
 waitUntil {!isNil "sync_vars"};
 
+//To check for rank data changes
 private _KP_liberation_playerRanks_old = [];
+
 while {true} do {
     waitUntil {sleep 0.2; (count sync_vars) > 0};
     

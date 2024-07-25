@@ -1,3 +1,17 @@
+//Clear arsenal if not cleared already
+if (KP_liberation_ace && KP_liberation_arsenal_type) then {
+    [player, true, false] call ace_arsenal_fnc_removeVirtualItems;
+};
+[missionNamespace, true] call BIS_fnc_removeVirtualWeaponCargo;
+[missionNamespace, true] call BIS_fnc_removeVirtualMagazineCargo;
+[missionNamespace, true] call BIS_fnc_removeVirtualItemCargo;
+[missionNamespace, true] call BIS_fnc_removeVirtualBackpackCargo;
+
+//Repopulate the arsenal again
+execVM "scripts\client\misc\init_arsenal.sqf";
+
+waitUntil {sleep 0.1; count (missionNamespace call BIS_fnc_getVirtualItemCargo) > 0};
+
 if (KPLIB_directArsenal) exitWith {
     if (KP_liberation_ace && KP_liberation_arsenal_type) then {
         [player, player, false] call ace_arsenal_fnc_openBox;
@@ -82,8 +96,9 @@ while { dialog && (alive player) && edit_loadout == 0 } do {
 
     if ( load_loadout > 0 ) then {
         private _loaded_loadout = _loadouts_data select (lbCurSel 201);
+        copyToClipboard (str _loaded_loadout);
         if (KP_liberation_ace && KP_liberation_arsenal_type) then {
-            player setUnitLoadout (_loaded_loadout select 1);
+            player setUnitLoadout (_loaded_loadout select 1 select 0);
         } else {
             [player, [profileNamespace, _loaded_loadout]] call BIS_fnc_loadInventory;
         };

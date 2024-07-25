@@ -35,6 +35,9 @@ private _saveData = [] call KPLIB_fnc_getSaveData;
 profileNamespace setVariable [GRLIB_save_key, str _saveData];
 saveProfileNamespace;
 
+["Dumping rank info below:", "SAVE"] call KPLIB_fnc_log;
+[str KP_liberation_playerRanks, "SAVE"] call KPLIB_fnc_log;
+
 kp_liberation_saving = false;
 
 true

@@ -26,14 +26,19 @@ if (_index == -1) exitWith {false};
 //Modifiers for scoring
 _airkill = false;
 _in_vehicle_modifier = 1;
-if (!(_killer isKindOf "Man") && (toLower (typeOf (vehicle _killer))) in KPLIB_allAirVeh_classes) then {
+if ((toLower (typeOf (vehicle _killer))) in KPLIB_allAirVeh_classes) then {
     _airkill = true;
 };
 
-if (!(_killer isKindOf "Man") && (toLower (typeOf (vehicle _killer))) in KPLIB_allLandVeh_classes) then  {
+if ((toLower (typeOf (vehicle _killer))) in KPLIB_allLandVeh_classes) then  {
     _in_vehicle_modifier = 0.25; //Get a quarter of the xp you would for infantry kills 
 };
 
+//Distance scoring
+_distance_modifier = 1;
+if ((vehicle _killer isEqualTo _killer) && (_killer distance _killed) > 500) then {
+    _distance_modifier = _distance_modifier + ((_killer distance _killed)/1000);
+};
 
 _base_score = 25;
 
@@ -64,7 +69,7 @@ if (side (group _killed) != GRLIB_side_enemy) then {
     _side_modifier = -1;
 };
 //Calculate winnings
-_final_score = _base_score * _score_multiplier * _in_vehicle_modifier * _side_modifier;
+_final_score = _base_score * _score_multiplier * _in_vehicle_modifier * _side_modifier * _distance_modifier;
 
 //Melee kill logic that overrides above
 _melee_weapons = ["Casey_Gravity_Hammer_1","Casey_Energy_Sword_2","Casey_Energy_Sword_1","WBK_BrassKnuckles","WBK_axe","Pipe_aluminium","Bat_Clear","Bat_Spike","WBK_brush_axe","WBK_craftedAxe","Crowbar","CrudeAxe","FireAxe","WBK_survival_weapon_2","WBK_survival_weapon_1","IceAxe","WBK_Katana","Weap_melee_knife","Knife_kukri","Knife_m3","Police_Bat","WBK_pipeStyledSword","Rod","Shovel_Russian","Sashka_Russian","Shovel_Russian_Rotated","Axe","WBK_SmallHammer","WBK_ww1_Club","UNSC_Knife","UNSC_Knife_reversed","WBK_survival_weapon_4","WBK_survival_weapon_4_r","WBK_survival_weapon_3_r","WBK_survival_weapon_3"];
@@ -100,7 +105,7 @@ if (currentWeapon _killer in _melee_weapons) then {
         _medal_loc = "an unmarked location";
     };
     
-    if (["Elite", typeOf _killed] call BIS_fnc_inString || ["Brute", typeOf _killed] call BIS_fnc_inString || ["Jackal", typeOf _killed] call BIS_fnc_inString) then {
+    if (["Elite", typeOf _killed] call BIS_fnc_inString || ["Brute", typeOf _killed] call BIS_fnc_inString) then {
         //Immediate Bronze Star
         _medal_str = format ["(%1) For heroic initiative in eliminating a fearsome enemy in single combat at %2.", _dateString, _medal_loc];
         [getPlayerUID _killer, ["bs", _medal_str]] call add_ranked_medal;

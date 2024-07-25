@@ -1,7 +1,6 @@
 params ["_unit", "_killer"];
 
 if (isServer) then {
-
     if (KP_liberation_kill_debug > 0) then {[format ["Kill Manager executed - _unit: %1 (%2) - _killer: %3 (%4)", typeOf _unit, _unit, typeOf _killer, _killer], "KILL"] call KPLIB_fnc_log;};
 
     // Get Killer, when ACE medical enabled, via lastDamageSource
@@ -69,6 +68,28 @@ if (isServer) then {
         if (vehicle _unit != _unit) then {moveOut _unit;};
         //Reset the player's ranked stats
         [getPlayerUID _unit] spawn reset_ranked_stats;
+        
+        //Spawn rememberance action
+        [_unit, ["Field Burial", { 
+            params ["_target", "_caller", "_actionId", "_arguments"];
+            //Give XP related to the body's rank
+            _give_score = 25;
+            [getPlayerUID _caller, _give_score] call add_ranked_score;
+            
+            //Remove the target
+            _grave_pos = getPosASL _target;
+            _body_type = typeOf _target;
+            _grave_type = "Land_OPTRE_Soldier_Grave";
+            
+            if (["ODST", _body_type] call BIS_fnc_inString || ["Spartan", _body_type] call BIS_fnc_inString) then {
+                _grave_type = "Land_OPTRE_ODST_Grave";
+            };
+            deleteVehicle _target;
+            //_dirt = "Land_Grave_11_F" createVehicle _grave_pos;
+            //_dirt enableSimulationGlobal false;
+            createSimpleObject [_grave_type, _grave_pos];
+            
+        }]] remoteExec ["addAction"]; // Note: does not return action id
     };
     
     //If player got the kill, then call the kill score manager

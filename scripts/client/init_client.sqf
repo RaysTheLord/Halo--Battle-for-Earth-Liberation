@@ -89,6 +89,94 @@ if (!KPLIB_sway) then {
 
 execVM "scripts\client\ui\intro.sqf";
 
+//Event handler for Purple Heart (for non-ACE medical system)
+if (KP_liberation_ace_nomed || !KP_liberation_ace) then {
+    player addEventHandler ["Hit", {
+        params ["_unit", "_source", "_damage", "_instigator"];
+        _unit spawn {
+            sleep 1;
+            if ((lifeState _this) isEqualTo "INCAPACITATED") then {
+                //Award purple heart
+                private _curDate = date;
+                _curMonth = "";
+
+                switch (_curDate select 1) do {
+                    case 1: { _curMonth = "Jan"; };
+                    case 2: { _curMonth = "Feb"; };
+                    case 3: { _curMonth = "Mar"; };
+                    case 4: { _curMonth = "Apr"; };
+                    case 5: { _curMonth = "May"; };
+                    case 6: { _curMonth = "Jun"; };
+                    case 7: { _curMonth = "Jul"; };
+                    case 8: { _curMonth = "Aug"; };
+                    case 9: { _curMonth = "Sep"; };
+                    case 10: { _curMonth = "Oct"; };
+                    case 11: { _curMonth = "Nov"; };
+                    case 12: { _curMonth = "Dec"; };
+                    default { _curMonth = "???"; };
+                };
+
+                private _dateString = format ["%3 %2 %1",
+                    _curDate select 0,
+                    _curMonth,
+                    (if (_curDate select 2 < 10) then { "0" } else { "" }) + str (_curDate select 2)
+                ];
+
+                _medal_loc = [getPos _this] call KPLIB_fnc_getLocationName;
+                if (_medal_loc isEqualTo "") then {
+                    _medal_loc = "an unmarked location";
+                };
+                
+                _ph_string = format ["(%1) Wounded in action at %2.", _dateString, _medal_loc];
+                [getPlayerUID _this, ["ph", _ph_string]] remoteExec ["add_ranked_medal", 2];
+            };
+        };
+    }];
+};
+
+//Event handler for Purple Heart (For ACE medical)
+if (!KP_liberation_ace_nomed && KP_liberation_ace) then {
+    //ACE handler
+    private _id = ["ace_unconscious", {
+        params ["_unit", "_unconscious"];
+        if (local _unit && _unconscious) then {
+            //Award purple heart
+            private _curDate = date;
+            _curMonth = "";
+
+            switch (_curDate select 1) do {
+                case 1: { _curMonth = "Jan"; };
+                case 2: { _curMonth = "Feb"; };
+                case 3: { _curMonth = "Mar"; };
+                case 4: { _curMonth = "Apr"; };
+                case 5: { _curMonth = "May"; };
+                case 6: { _curMonth = "Jun"; };
+                case 7: { _curMonth = "Jul"; };
+                case 8: { _curMonth = "Aug"; };
+                case 9: { _curMonth = "Sep"; };
+                case 10: { _curMonth = "Oct"; };
+                case 11: { _curMonth = "Nov"; };
+                case 12: { _curMonth = "Dec"; };
+                default { _curMonth = "???"; };
+            };
+
+            private _dateString = format ["%3 %2 %1",
+                _curDate select 0,
+                _curMonth,
+                (if (_curDate select 2 < 10) then { "0" } else { "" }) + str (_curDate select 2)
+            ];
+
+            _medal_loc = [getPos _unit] call KPLIB_fnc_getLocationName;
+            if (_medal_loc isEqualTo "") then {
+                _medal_loc = "an unmarked location";
+            };
+
+            _ph_string = format ["(%1) Wounded in action at %2.", _dateString, _medal_loc];
+            [getPlayerUID _unit, ["ph", _ph_string]] remoteExec ["add_ranked_medal", 2];        
+        };
+    }] call CBA_fnc_addEventHandler;
+};
+
 [player] joinSilent (createGroup [GRLIB_side_friendly, true]);
 
 //Request a player addition if not already in there

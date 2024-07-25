@@ -6175,7 +6175,7 @@
             <Czech>Zbývá %1 minut na mobilní respawn.</Czech>
         </Key>
         <Key ID="STR_CR_RESISTANCE_KILLMSG">
-            <Original>An allied resistance fighter named %1 was killed!</Original>
+            <Original>Allied INDFOR named %1 was killed!</Original>
             <German>Ein verbündeter Widerstandskämpfer mit Namen %1 wurde getötet!</German>
             <Spanish>Un aliado de la resistencia llamado %1 ha sido asesinado!</Spanish>
             <Russian>Союзный боец сопротивления %1 был убит!</Russian>
@@ -6534,7 +6534,7 @@
             <Czech>Incidenty přátelské BLUFOR: %1</Czech>
         </Key>
         <Key ID="STR_STATS_GUE_K_INF">
-            <Original>Resistance fighters killed: %1</Original>
+            <Original>INDFOR killed: %1</Original>
             <German>Widerstandskämpfer getötet: %1</German>
             <Spanish>Combatientes de la resistencia eliminados: %1</Spanish>
             <Russian>Убито бойцов сопротивления: %1</Russian>
@@ -6542,7 +6542,7 @@
             <Czech>Spojenci zabili: %1</Czech>
         </Key>
         <Key ID="STR_STATS_GUE_TK_INF">
-            <Original>Allied resistance fighters killed: %1</Original>
+            <Original>Allied INDFOR fighters killed: %1</Original>
             <German>Verbündete Widerstandskämpfer getötet: %1</German>
             <Spanish>Combatientes de la resistencia aliada eliminados: %1</Spanish>
             <Russian>Убито союзнических бойцов сопротивления: %1</Russian>
@@ -6550,7 +6550,7 @@
             <Czech>Spojenci zabití: %1</Czech>
         </Key>
         <Key ID="STR_STATS_GUE_TK_INF_PL">
-            <Original>Allied resistance fighters killed by players: %1</Original>
+            <Original>Allied INDFOR fighters killed by players: %1</Original>
             <German>Verbündete Widerstandskämpfer von Spielern getötet: %1</German>
             <Spanish>Combatientes de la resistencia aliada eliminados por jugadores: %1</Spanish>
             <Russian>Убито союзнических бойцов сопротивления игроками: %1</Russian>
