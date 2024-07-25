@@ -51,7 +51,6 @@ KP_liberation_fuel_crate = "CargoNet_01_barrels_F";                     // This 
 */
 infantry_units = [
 	["OPTRE_UNSC_Marine_Soldier_Rifleman_AR",0,0,0],
-	["OPTRE_UNSC_Marine_Soldier_Rifleman_BR",0,0,0],
 	["OPTRE_UNSC_Marine_Soldier_Rifleman_AT",10,0,0],
 	["OPTRE_UNSC_Marine_Soldier_Corpsman",0,0,0],
 	["OPTRE_UNSC_Marine_Soldier_Autorifleman",0,0,0],

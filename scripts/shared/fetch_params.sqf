@@ -6,7 +6,8 @@ if (isClass (configfile >> "CfgPatches" >> "ace_common")) then {
     ["ACE detected. Deactivating resupply script from Liberation.", "MOD"] call KPLIB_fnc_log;
 } else {
     KP_liberation_ace = false;
-    //Start revive system
+    //Start revive system (NOTE: Shouldn't need to because it's part of the params)
+    /*
     ReviveMode = 1;						//0: disabled, 1: enabled, 2: controlled by player attributes
     ReviveUnconsciousStateMode = 1;		//0: basic, 1: advanced, 2: realistic
     ReviveRequiredTrait = 0;			//0: none, 1: medic trait is required
@@ -16,12 +17,14 @@ if (isClass (configfile >> "CfgPatches" >> "ace_common")) then {
     ReviveMedicSpeedMultiplier = 2;		//speed multiplier for revive performed by medic
     ReviveForceRespawnDelay = 3;		//time needed to perform force respawn (in secs)
     ReviveBleedOutDelay = 120;			//unconscious state duration (in secs)
+    */
 };
 
 if (isClass (configfile >> "CfgPatches" >> "ace_nomedical")) then {
     KP_liberation_ace_nomed = true; ["ACE NO MEDICAL detected.", "MOD"] call KPLIB_fnc_log;
     //Start revive system
     if (KP_liberation_ace) then {
+        /*
         ReviveMode = 1;						//0: disabled, 1: enabled, 2: controlled by player attributes
         ReviveUnconsciousStateMode = 1;		//0: basic, 1: advanced, 2: realistic
         ReviveRequiredTrait = 0;			//0: none, 1: medic trait is required
@@ -30,7 +33,8 @@ if (isClass (configfile >> "CfgPatches" >> "ace_nomedical")) then {
         ReviveDelay = 6;					//time needed to revive someone (in secs)
         ReviveMedicSpeedMultiplier = 2;		//speed multiplier for revive performed by medic
         ReviveForceRespawnDelay = 3;		//time needed to perform force respawn (in secs)
-        ReviveBleedOutDelay = 120;			//unconscious state duration (in secs)    
+        ReviveBleedOutDelay = 120;			//unconscious state duration (in secs)
+        */
     };
 } else {
     KP_liberation_ace_nomed = false;
