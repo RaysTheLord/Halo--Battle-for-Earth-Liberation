@@ -16,7 +16,7 @@ class EditorData
 	};
 	class LayerIndexProvider
 	{
-		nextID=67;
+		nextID=69;
 	};
 	class Camera
 	{
@@ -13688,6 +13688,32 @@ class Mission
 							{
 								class Attribute0
 								{
+									property="ENH_unitTraits_engineer";
+									expression="[_this, ['Engineer', _value]] remoteExec ['setUnitTrait', _this]";
+									class Value
+									{
+										class data
+										{
+											singleType="BOOL";
+											value=1;
+										};
+									};
+								};
+								class Attribute1
+								{
+									property="ace_isEngineer";
+									expression="if !(_value == ([0, 1] select (_this getUnitTrait 'engineer')) || {_value == -1}) then {_this setVariable ['ace_isEngineer', _value, true]}";
+									class Value
+									{
+										class data
+										{
+											singleType="SCALAR";
+											value=1;
+										};
+									};
+								};
+								class Attribute2
+								{
 									property="speaker";
 									expression="_this setspeaker _value;";
 									class Value
@@ -13699,7 +13725,7 @@ class Mission
 										};
 									};
 								};
-								class Attribute1
+								class Attribute3
 								{
 									property="pitch";
 									expression="_this setpitch _value;";
@@ -13712,7 +13738,20 @@ class Mission
 										};
 									};
 								};
-								nAttributes=2;
+								class Attribute4
+								{
+									property="ENH_unitTrait_UAVHacker";
+									expression="[_this, ['UAVHacker', _value]] remoteExec ['setUnitTrait', _this]";
+									class Value
+									{
+										class data
+										{
+											singleType="BOOL";
+											value=1;
+										};
+									};
+								};
+								nAttributes=5;
 							};
 						};
 						class Item1
@@ -13737,6 +13776,32 @@ class Mission
 							{
 								class Attribute0
 								{
+									property="ENH_unitTraits_engineer";
+									expression="[_this, ['Engineer', _value]] remoteExec ['setUnitTrait', _this]";
+									class Value
+									{
+										class data
+										{
+											singleType="BOOL";
+											value=1;
+										};
+									};
+								};
+								class Attribute1
+								{
+									property="ace_isEngineer";
+									expression="if !(_value == ([0, 1] select (_this getUnitTrait 'engineer')) || {_value == -1}) then {_this setVariable ['ace_isEngineer', _value, true]}";
+									class Value
+									{
+										class data
+										{
+											singleType="SCALAR";
+											value=1;
+										};
+									};
+								};
+								class Attribute2
+								{
 									property="speaker";
 									expression="_this setspeaker _value;";
 									class Value
@@ -13748,7 +13813,7 @@ class Mission
 										};
 									};
 								};
-								class Attribute1
+								class Attribute3
 								{
 									property="pitch";
 									expression="_this setpitch _value;";
@@ -13761,7 +13826,20 @@ class Mission
 										};
 									};
 								};
-								nAttributes=2;
+								class Attribute4
+								{
+									property="ENH_unitTrait_UAVHacker";
+									expression="[_this, ['UAVHacker', _value]] remoteExec ['setUnitTrait', _this]";
+									class Value
+									{
+										class data
+										{
+											singleType="BOOL";
+											value=1;
+										};
+									};
+								};
+								nAttributes=5;
 							};
 						};
 						class Item2
@@ -13786,6 +13864,32 @@ class Mission
 							{
 								class Attribute0
 								{
+									property="ENH_unitTraits_engineer";
+									expression="[_this, ['Engineer', _value]] remoteExec ['setUnitTrait', _this]";
+									class Value
+									{
+										class data
+										{
+											singleType="BOOL";
+											value=1;
+										};
+									};
+								};
+								class Attribute1
+								{
+									property="ace_isEngineer";
+									expression="if !(_value == ([0, 1] select (_this getUnitTrait 'engineer')) || {_value == -1}) then {_this setVariable ['ace_isEngineer', _value, true]}";
+									class Value
+									{
+										class data
+										{
+											singleType="SCALAR";
+											value=1;
+										};
+									};
+								};
+								class Attribute2
+								{
 									property="speaker";
 									expression="_this setspeaker _value;";
 									class Value
@@ -13797,7 +13901,7 @@ class Mission
 										};
 									};
 								};
-								class Attribute1
+								class Attribute3
 								{
 									property="pitch";
 									expression="_this setpitch _value;";
@@ -13810,7 +13914,20 @@ class Mission
 										};
 									};
 								};
-								nAttributes=2;
+								class Attribute4
+								{
+									property="ENH_unitTrait_UAVHacker";
+									expression="[_this, ['UAVHacker', _value]] remoteExec ['setUnitTrait', _this]";
+									class Value
+									{
+										class data
+										{
+											singleType="BOOL";
+											value=1;
+										};
+									};
+								};
+								nAttributes=5;
 							};
 						};
 						class Item3
@@ -13835,6 +13952,32 @@ class Mission
 							{
 								class Attribute0
 								{
+									property="ENH_unitTraits_engineer";
+									expression="[_this, ['Engineer', _value]] remoteExec ['setUnitTrait', _this]";
+									class Value
+									{
+										class data
+										{
+											singleType="BOOL";
+											value=1;
+										};
+									};
+								};
+								class Attribute1
+								{
+									property="ace_isEngineer";
+									expression="if !(_value == ([0, 1] select (_this getUnitTrait 'engineer')) || {_value == -1}) then {_this setVariable ['ace_isEngineer', _value, true]}";
+									class Value
+									{
+										class data
+										{
+											singleType="SCALAR";
+											value=1;
+										};
+									};
+								};
+								class Attribute2
+								{
 									property="speaker";
 									expression="_this setspeaker _value;";
 									class Value
@@ -13846,7 +13989,7 @@ class Mission
 										};
 									};
 								};
-								class Attribute1
+								class Attribute3
 								{
 									property="pitch";
 									expression="_this setpitch _value;";
@@ -13859,7 +14002,20 @@ class Mission
 										};
 									};
 								};
-								nAttributes=2;
+								class Attribute4
+								{
+									property="ENH_unitTrait_UAVHacker";
+									expression="[_this, ['UAVHacker', _value]] remoteExec ['setUnitTrait', _this]";
+									class Value
+									{
+										class data
+										{
+											singleType="BOOL";
+											value=1;
+										};
+									};
+								};
+								nAttributes=5;
 							};
 						};
 					};
