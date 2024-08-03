@@ -59,7 +59,11 @@ militia_squad = [
 
 // Militia vehicles. Lightweight vehicle classnames the game will pick from randomly as sector defenders. Can also be empty for only infantry milita.
 militia_vehicles = [
-    "OPTRE_FC_Ghost"
+    "OPTRE_FC_Ghost",
+    "OPTRE_FC_Ghost",
+    "OPTRE_FC_Ghost",
+	"OPTRE_FC_T26_AI",
+	"OPTRE_FC_T26_AT"
 ];
 
 // All enemy vehicles that can spawn as sector defenders and patrols at high enemy combat readiness (aggression levels).
