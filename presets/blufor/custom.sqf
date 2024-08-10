@@ -160,6 +160,7 @@ buildings = [
 	["Land_OPTRE_M72_barrier",0,0,0],
 	["Land_OPTRE_M72S_barrier",0,0,0],	
 	["Land_OPTRE_ONI_barrier",0,0,0],
+	["OPTRE_Ammo_SupplyPod_Empty",0,0,0],
 	["Land_OPTRE_medical_tent_grn",0,0,0],
 	["Land_OPTRE_medical_tent_gry",0,0,0],
     ["Land_OPTRE_medical_tent_tan",0,0,0],
