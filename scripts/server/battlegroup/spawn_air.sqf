@@ -2,6 +2,12 @@ params ["_first_objective"];
 
 if (opfor_air isEqualTo []) exitWith {false};
 
+if (typeName _first_objective isEqualTo "STRING") then {
+    _first_objective = markerPos _first_objective;
+};
+
+private _planes_number = ((floor linearConversion [20, 100, combat_readiness, 1, 3]) min 3) max 0;
+
 private _planes_number = ((floor linearConversion [40, 100, combat_readiness, 1, 3]) min 3) max 0;
 
 if (_planes_number < 1) exitWith {};
